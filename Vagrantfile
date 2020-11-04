@@ -1,11 +1,13 @@
 # Install required plugins
-
 required_plugins = ["vagrant-hostsupdater"]
 required_plugins.each do |plugin|
     exec "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
 end
 
+# Vagrant box instructed to use
 BOX_IMAGE = "ubuntu/bionic64"
+
+# How many apps you want to deploy
 APP_COUNT = 2
 
 Vagrant.configure("2") do |config|
@@ -16,7 +18,7 @@ Vagrant.configure("2") do |config|
     lb.vm.synced_folder "environment/lb", "/home/ubuntu/environment"
     lb.vm.provision "ansible_local"  do |ansible|
       ansible.playbook = "provisioning/lb/nginx.yml"
-      # replaced sudo with become - depreciation warnng 1.1
+      # replaced sudo with become - depreciation warning
       ansible.become = true
     end
   end

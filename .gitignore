@@ -1,5 +1,4 @@
 .vagrant
-app/node_modules
 .git
 *.log
 ubuntu*

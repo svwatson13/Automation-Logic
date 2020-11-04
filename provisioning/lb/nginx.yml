@@ -3,21 +3,27 @@
   remote_user: root
 
   tasks:
+
+# updates the package lists for upgrades for packages that need upgrading and upgrades them
   - name: apt update
     apt:
       update_cache: yes
       upgrade: yes
 
+# install nginx for webserving/loadbalancing
   - name: install nginx
     apt:
       pkg: nginx
 
+# configuring the loadbalancer.conf file in order to tell the load balancer where to send requests
   - name: Creating a synced connection - Linking VM file to nginx default
     shell: ln -sf /home/ubuntu/environment/loadbalancer.conf /etc/nginx/conf.d/loadbalancer.conf
 
+# load balancer didn't work unless I removed this
   - name: remove existing nginx default
     shell: rm /etc/nginx/sites-enabled/default
 
+# restart and enable nginx in order to implement the above changes to the nginx files
   - name: restart nginx
     shell: systemctl restart nginx
 

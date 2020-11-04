@@ -3,14 +3,19 @@
   remote_user: root
 
   tasks:
+
+# updates the package lists for upgrades for packages that need upgrading and upgrades them
   - name: apt update
     apt:
       update_cache: yes
       upgrade: yes
 
+# install nginx for webserving
   - name: install nginx
     apt:
       pkg: nginx
+
+# installing software to run javascript app
 
   - name: install nodejs
     apt:
