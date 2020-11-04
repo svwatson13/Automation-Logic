@@ -24,9 +24,9 @@ https://app.vagrantup.com/ubuntu/boxes/bionic64
 - python - https://www.python.org/downloads/ - Version 3.7.4
 
 ### Running the infrastructure
-- Git clone repo
+- Git clone repo into your own folder - ``git clone https://github.com/swatson2019/Automation-Logic.git``
 - ``CD`` into folder
-- Run ``vagrant up``
+- Run ``vagrant up`` - at first required plugins may install and then it will exit so just run ``vagrant up`` again
 
 ### Processes explained
 - The ``vagrant up`` command runs the vagrant file which contains the information on how the 3 virtual machines will be configured
@@ -36,11 +36,11 @@ https://app.vagrantup.com/ubuntu/boxes/bionic64
 ### The result
 - Now when you search the load balancer IP address (http://192.168.10.100) or the set host alias (development.local) into your search engine it will present you with the web app from the first web server (http://192.168.10.101)
 - If you refresh twice the load balancer will then present you with the app from the second web server (http://192.168.10.102) and then another refresh will send you back to the first web server - this is because of the way I configured the nginx 'loadbalancer.conf' file with a weight of 2 on the first server (https://upcloud.com/community/tutorials/configure-load-balancing-nginx)
-- In this example the apps are identical (due to using the same configuration and app setup) therefore it will not be obvious that the load balancing is working - in order to make this clear you can make different apps
+- In this example the apps are identical (due to using the same configuration and app setup) and therefore it will not be obvious that the load balancing is working - in order to make this clear you can make different apps
 
 ### Running tests
-- Once again in the root folder on bash run ``pytest``
-- These test whether simple url requests return a 200 status code - aka working website
+- Now ``CD`` into tests folder and run ``pytest``
+- This tests whether simple url get requests return a 200 status code (aka working website)
 
 ### Depreciation warnings:
 - [1.1] Sudo - now become --Fixed
