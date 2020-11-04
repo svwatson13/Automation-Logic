@@ -1,0 +1,25 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+  - name: apt update
+    apt:
+      update_cache: yes
+      upgrade: yes
+
+  - name: install nginx
+    apt:
+      pkg: nginx
+
+  - name: Creating a synced connection - Linking VM file to nginx default
+    shell: ln -sf /home/ubuntu/environment/loadbalancer.conf /etc/nginx/conf.d/loadbalancer.conf
+
+  - name: remove existing nginx default
+    shell: rm /etc/nginx/sites-enabled/default
+
+  - name: restart nginx
+    shell: systemctl restart nginx
+
+  - name: restart nginx
+    shell: systemctl enable nginx
