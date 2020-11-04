@@ -6,11 +6,12 @@ def test_nginx():
     resp = requests.get(url)
     assert resp.status_code == 200
 
-def test_nginx_html():
-    "GET request to url returns a 502"
+# This test is a very poor test for loadbalancing - if not working then returns just 'text/html' so shows something
+def test_is_loadbalancing():
+    "GET request to url returns info showing sign of loadbalancing"
     url = 'http://192.168.10.100/'
     resp = requests.get(url)
-    assert resp.headers['content-type'] == 'text/html'
+    assert resp.headers['content-type'] == 'text/html; charset=utf-8'
 
 def test_app1():
     "GET request to url returns a 200"

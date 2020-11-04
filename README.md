@@ -25,7 +25,7 @@ https://app.vagrantup.com/ubuntu/boxes/bionic64
 
 ### Running the infrastructure
 - Git clone repo into your own folder - ``git clone https://github.com/swatson2019/Automation-Logic.git``
-- ``CD`` into folder
+- ``CD`` into newly created 'Automation-Logic' folder
 - Run ``vagrant up`` - at first required plugins may install and then it will exit so just run ``vagrant up`` again
 
 ### Processes explained
