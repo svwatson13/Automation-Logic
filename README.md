@@ -39,8 +39,10 @@ https://app.vagrantup.com/ubuntu/boxes/bionic64
 - In this example the apps are identical (due to using the same configuration and app setup) and therefore it will not be obvious that the load balancing is working - in order to make this clear you can make different apps
 
 ### Running tests
-- Now ``CD`` into tests folder and run ``pytest``
-- This tests whether simple url get requests return a 200 status code (aka working website)
+- First, ensure python is added to PATH on environment variables ``C:/path/to/python/Scripts`` or add anaconda to PATH ``C:/path/to/Anaconda/Scripts`` (https://stackoverflow.com/questions/53346267/how-to-make-pip-available-to-git-bash-command-line-on-windows)
+- Then run ``pip install pytest``
+- Now ``CD`` into tests folder and run ``pytest`` - if this fails try uninstalling numpy and reinstalling (``pip uninstall numpy``,``pip install numpy``)
+- This tests whether simple url get requests return a 200 status code (aka a working website)
 
 ### Depreciation warnings:
 - Sudo - now become --Fixed
